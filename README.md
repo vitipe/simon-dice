@@ -1,2 +1,5 @@
 # simon-dice
- Prueba de elaborar un "simón dice" sobre la base de lo aprendido en el curso de "r/argentinaPrograma".
+ 
+ ## Tarea del curso "r/argentinaPrograma" de elaborar un "simón dice" sobre la base de lo aprendido.
+
+La nueva herramienta sería utilizar bootstrap
