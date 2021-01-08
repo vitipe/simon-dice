@@ -41,9 +41,29 @@ turnoUsuario:
 
 */
 
-let $divPrueba = document.querySelector('#div-prueba');
+function obternerNumeroRandom(posiblesJugadas) {
+    const posiblesJugadas = [1, 2, 3, 4];
+    let numeroRandom = Math.floor(Math.random()*posiblesJugadas.length + 1);
 
-$divPrueba.onclick = function() {
-    console.log('hola!');
+    return numeroRandom;
+    //en realidad puede ser cualquier valor adentro del array siempre que sean 4 valores. El "+1" es para que no tire 0.
 }
+
+function colorearBotones(numeroRandom) {
+    let $botonEnJuego = document.querySelector(`div-#${numeroRandom}`);
+    $botonEnJuego.className = 'en-juego';
+}
+
+function juegaComputadora() {
+    let jugadaComputadora = [];
+    let turnoUsuario = 1;
+
+    for (let i = 0; i<=turnoUsuario; i++) { //probar usar ForEach?
+        jugadaComputadora.push(obtenerNumeroRandom()); 
+    }
+
+}
+
+const $botonJugar = document.querySelector("#boton-jugar");
+$botonJugar.onclick = juegaComputadora();
 

@@ -1,10 +1,9 @@
-.container {
+.container-tablero {
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     height: 500px;
     width: 600px;
-    position: center;
 }
 
 #tablero-juego {
@@ -20,10 +19,17 @@
 }
 
 #div-3 {
-    background-color:#f8df21;
+    background-color:#f5f821;
 }
 
 #div-4 {
     background-color:#1e98db;
 }
 
+.en-juego {
+    opacity: 20%;
+}
+
+body {
+    background-color: grey;
+}
