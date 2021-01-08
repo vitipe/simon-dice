@@ -39,10 +39,11 @@ turnoUsuario:
             resetear juego (vaciar turnoComputadora?)
             pedir hacer click en jugar de nuevo
 
-
-
-
-
-
-
 */
+
+let $divPrueba = document.querySelector('#div-prueba');
+
+$divPrueba.onclick = function() {
+    console.log('hola!');
+}
+
