@@ -41,29 +41,78 @@ turnoUsuario:
 
 */
 
-function obternerNumeroRandom(posiblesJugadas) {
-    const posiblesJugadas = [1, 2, 3, 4];
+function obternerNumeroRandom() {
+    let posiblesJugadas = [1, 2, 3, 4];
     let numeroRandom = Math.floor(Math.random()*posiblesJugadas.length + 1);
 
     return numeroRandom;
     //en realidad puede ser cualquier valor adentro del array siempre que sean 4 valores. El "+1" es para que no tire 0.
 }
 
-function colorearBotones(numeroRandom) {
-    let $botonEnJuego = document.querySelector(`div-#${numeroRandom}`);
-    $botonEnJuego.className = 'en-juego';
+
+
+function colorearBotones(jugadaComputadora) {
+    let delayColores = 1000;
+    let delayReseteo = 2000;
+
+    for(let i = 0; i<jugadaComputadora.length;i++) {
+
+        let $botonEnJuego = document.querySelector(`#div-${jugadaComputadora[i]}`);
+        
+        setTimeout(function() {
+            $botonEnJuego.className = 'en-juego';
+        }, delayColores);
+
+        setTimeout(function() {
+            $botonEnJuego.className = '';
+        }, delayReseteo);
+
+        delayColores += 1500;
+        delayReseteo += 1500;
+    }
+}
+
+function crearJugadaComputadora() {
+    let jugadaComputadora = [];
+    let turnoUsuario = 1;
+    for (let i = 0; i<turnoUsuario; i++) { //probar usar ForEach?
+        jugadaComputadora.push(obternerNumeroRandom()); 
+    }
+    turnoUsuario++
+
+    return jugadaComputadora;
 }
 
 function juegaComputadora() {
-    let jugadaComputadora = [];
-    let turnoUsuario = 1;
-
-    for (let i = 0; i<=turnoUsuario; i++) { //probar usar ForEach?
-        jugadaComputadora.push(obtenerNumeroRandom()); 
-    }
-
+    return colorearBotones(crearJugadaComputadora());
 }
 
-const $botonJugar = document.querySelector("#boton-jugar");
-$botonJugar.onclick = juegaComputadora();
+function juegaUsuario() {
+    let jugadaUsuario = [];
+    
+}
 
+document.querySelector("#boton-jugar").onclick = function() {
+    juegaComputadora();
+    juegaUsuario();
+
+    return false;
+}
+
+let jugadaUsuario = [];
+
+document.querySelector('#div-1').onclick = function(){
+    jugadaUsuario.push(1);
+}
+
+document.querySelector('#div-2').onclick = function(){
+    jugadaUsuario.push(2)
+}
+
+document.querySelector('#div-3').onclick = function(){
+    jugadaUsuario.push(3)
+}
+
+document.querySelector('#div-4').onclick = function(){
+    jugadaUsuario.push(4)
+}
