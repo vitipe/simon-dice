@@ -42,3 +42,7 @@ body {
     font-size: 32px;
     color: red;
 }
+
+#div-tapa-jugada {
+    opacity: 0%;
+}

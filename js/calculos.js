@@ -1,14 +1,20 @@
 /*
-TO-DO
-1.  resetearJugadaUsuario no elimina todos los elementos del array jugadaUsuario
-2. la computadora no sigue agregando colores a la jugada
-4. Armar el contador de turno en el html y la function que lo actualice
+    TO-DO
+
+1. Que al jugar de nuevo arme un patron random diferente y no el mismo 
+2. Un div que tape o algo para que no se pueda hacer click mientras la computadora juega.
+4. 
+5. Armar un leaderboard
+
+
+Modos de juego a ver si agrego?:
+Continuar desde donde le erraste
+Aumentar la velocidad a la cual te tira todos los colores
+modo inverso o algo asi?
 
 */
 
-
-let jugadaUsuario = [];
-
+let jugadaUsuario = []; //ver de mandarlo adentro de alguna function
 
 function obternerNumeroRandom() {
     let numeroRandom = Math.floor(Math.random() * 4 + 1); //El valor tiene que ser entre 1 y 4
@@ -42,11 +48,9 @@ function crearJugadaComputadora(turnoUsuario) {
     let jugadaComputadora = [];
     
     for (let i = 0; i<turnoUsuario; i++) { //probar usar ForEach?
-        jugadaComputadora.push(obternerNumeroRandom()); 
-        
+        jugadaComputadora.push(obternerNumeroRandom());    
     }
-    
-    
+
     return jugadaComputadora;
 }
 
@@ -64,7 +68,7 @@ function resetearJugadaUsuario(jugadaUsuario) {
 }
 
 function sumadorTurnoUsuario() {
-    let turnoUsuario = 0;
+    let turnoUsuario = 1;
     for (let i = 0; i<jugadaComputadora.length; i++) {
         turnoUsuario++
     }
@@ -89,6 +93,7 @@ function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) {
         } else {
             document.querySelector('#error-jugada').className = '';
             document.querySelector('#boton-reinicio-juego').className = '';
+            document.querySelector('error-jugada').textContent = "Lograste " + (turnoUsuario - 1) + " puntos!" //Hacer que esto ande
         } 
     }
 }
