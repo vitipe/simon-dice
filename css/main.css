@@ -31,5 +31,14 @@
 }
 
 body {
-    background-color: grey;
+    background-color: rgb(206, 206, 206);
+}
+
+.oculto {
+    display: none;
+}
+
+#error-jugada {
+    font-size: 32px;
+    color: red;
 }
