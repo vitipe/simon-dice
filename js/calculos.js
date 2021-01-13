@@ -36,21 +36,21 @@ function colorearBotones(jugadaComputadora) {
     }
 }
 
-function crearJugadaComputadora() {
+let turnoUsuario = 1;
+
+function crearJugadaComputadora(turnoUsuario) {
     let jugadaComputadora = [];
-    let turnoUsuario = 1;
     
     for (let i = 0; i<turnoUsuario; i++) { //probar usar ForEach?
         jugadaComputadora.push(obternerNumeroRandom()); 
         
     }
-
-    turnoUsuario++;
-
+    
+    
     return jugadaComputadora;
 }
 
-let jugadaComputadora = crearJugadaComputadora();
+let jugadaComputadora = crearJugadaComputadora(turnoUsuario);
 
 function juegaComputadora() {
     return colorearBotones(jugadaComputadora);
@@ -61,6 +61,14 @@ function resetearJugadaUsuario(jugadaUsuario) {
     for (let i = 1; i <= jugadaUsuario.length;) {
         jugadaUsuario.pop(jugadaUsuario);
     }
+}
+
+function sumadorTurnoUsuario() {
+    let turnoUsuario = 0;
+    for (let i = 0; i<jugadaComputadora.length; i++) {
+        turnoUsuario++
+    }
+    document.querySelector('#turno-usuario').textContent = "Turno #" + turnoUsuario;
 }
 
 function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) {
@@ -75,7 +83,8 @@ function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) {
 
         if (contadorAciertos === jugadaComputadora.length){
             resetearJugadaUsuario(jugadaUsuario);
-            jugadaComputadora.push(obternerNumeroRandom()); 
+            jugadaComputadora.push(obternerNumeroRandom());
+            sumadorTurnoUsuario();
             juegaComputadora();
         } else {
             document.querySelector('#error-jugada').className = '';
@@ -115,4 +124,6 @@ document.querySelector('#boton-reinicio-juego').onclick = function() {
     resetearJugadaUsuario(jugadaUsuario);
     juegaComputadora();
 }
+
+
 
