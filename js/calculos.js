@@ -1,10 +1,11 @@
 /*
     TO-DO
 
-1. Que al jugar de nuevo arme un patron random diferente y no el mismo (boton resetear y un form)
-2. Un div que tape o algo para que no se pueda hacer click mientras la computadora juega.
-4. Hacer que vaya chequeando uno a uno los valores del array. Si no, por ejemplo, tengo un array de 4 elementos, y si erro en el segundo de todas maneras tengo que completar 4 para que detecte el error.
-5. Armar un leaderboard
+1. Un div que tape o algo para que no se pueda hacer click mientras la computadora juega.
+2. Ocultar boton "Jugar" al hacerle click.
+3. Armar un leaderboard
+4. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
+5. Armar Bootstrap
 
 
 Modos de juego a ver si agrego?:
@@ -84,29 +85,38 @@ function contadorPuntosUsuario() {
     return puntosUsuario - 1;
 }
 
+function mostrarErrorJugada() {
+    document.querySelector('#error-jugada').className = '';
+    document.querySelector('#boton-continuar-juego').className = '';
+    document.querySelector('#boton-reinicio-juego').className = '';
+    document.querySelector('#error-jugada').textContent = "No era esa jugada, pero lograste " + contadorPuntosUsuario() + " puntos!";
+}
+
+function ocultarErrorJugada() {
+    document.querySelector('#error-jugada').className = 'oculto';
+    document.querySelector('#boton-continuar-juego').className = 'oculto';
+    document.querySelector('#boton-reinicio-juego').className = 'oculto';
+}
+
 function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) {
+    let cantidadAciertos = 0;
+    
+    for (let i = 0; i<jugadaUsuario.length; i++) {
 
-    if (jugadaUsuario.length === jugadaComputadora.length) {
-        let contadorAciertos = 0;
-        for (let i = 0; i<jugadaComputadora.length; i++) {
-            if (jugadaUsuario[i] === jugadaComputadora[i]) {
-                contadorAciertos++;
-            }
-        }
-
-        if (contadorAciertos === jugadaComputadora.length){
-            resetearJugadaUsuario(jugadaUsuario);
-            jugadaComputadora.push(obternerNumeroRandom());
-            sumadorTurnoUsuario();
-            contadorPuntosUsuario();
-            juegaComputadora();
+        if (jugadaUsuario[i] === jugadaComputadora[i]) {
+            cantidadAciertos++;
         } else {
-            document.querySelector('#error-jugada').className = '';
-            document.querySelector('#boton-continuar-juego').className = '';
-            document.querySelector('#boton-reinicio-juego').className = '';
-            document.querySelector('#error-jugada').textContent = "Le erraste, pero lograste " + contadorPuntosUsuario() + " puntos!";
-        } 
+            mostrarErrorJugada();
+        }
     }
+    
+    if (cantidadAciertos === jugadaComputadora.length){
+        resetearJugadaUsuario(jugadaUsuario);
+        jugadaComputadora.push(obternerNumeroRandom());
+        sumadorTurnoUsuario();
+        contadorPuntosUsuario();
+        juegaComputadora();
+    } 
 }
 
 document.querySelector("#boton-jugar").onclick = function() {
@@ -135,9 +145,7 @@ document.querySelector('#div-4').onclick = function(){
 }
 
 document.querySelector('#boton-continuar-juego').onclick = function() {
-    document.querySelector('#error-jugada').className = 'oculto';
-    document.querySelector('#boton-continuar-juego').className = 'oculto';
-    document.querySelector('#boton-reinicio-juego').className = 'oculto';
+    ocultarErrorJugada();
     resetearJugadaUsuario(jugadaUsuario);
     juegaComputadora();
 
