@@ -1,9 +1,9 @@
 /*
     TO-DO
 
-1. Que al jugar de nuevo arme un patron random diferente y no el mismo 
+1. Que al jugar de nuevo arme un patron random diferente y no el mismo (boton resetear y un form)
 2. Un div que tape o algo para que no se pueda hacer click mientras la computadora juega.
-4. 
+4. Hacer que vaya chequeando uno a uno los valores del array. Si no, por ejemplo, tengo un array de 4 elementos, y si erro en el segundo de todas maneras tengo que completar 4 para que detecte el error.
 5. Armar un leaderboard
 
 
@@ -68,11 +68,20 @@ function resetearJugadaUsuario(jugadaUsuario) {
 }
 
 function sumadorTurnoUsuario() {
-    let turnoUsuario = 1;
+    let turnoUsuario = 0;
     for (let i = 0; i<jugadaComputadora.length; i++) {
         turnoUsuario++
     }
     document.querySelector('#turno-usuario').textContent = "Turno #" + turnoUsuario;
+}
+
+function contadorPuntosUsuario() {
+    let puntosUsuario = 0;
+    for (let i = 0; i<jugadaComputadora.length; i++) {
+        puntosUsuario++
+    }
+
+    return puntosUsuario - 1;
 }
 
 function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) {
@@ -89,11 +98,13 @@ function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) {
             resetearJugadaUsuario(jugadaUsuario);
             jugadaComputadora.push(obternerNumeroRandom());
             sumadorTurnoUsuario();
+            contadorPuntosUsuario();
             juegaComputadora();
         } else {
             document.querySelector('#error-jugada').className = '';
+            document.querySelector('#boton-continuar-juego').className = '';
             document.querySelector('#boton-reinicio-juego').className = '';
-            document.querySelector('error-jugada').textContent = "Lograste " + (turnoUsuario - 1) + " puntos!" //Hacer que esto ande
+            document.querySelector('#error-jugada').textContent = "Le erraste, pero lograste " + contadorPuntosUsuario() + " puntos!";
         } 
     }
 }
@@ -123,11 +134,14 @@ document.querySelector('#div-4').onclick = function(){
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
 
-document.querySelector('#boton-reinicio-juego').onclick = function() {
+document.querySelector('#boton-continuar-juego').onclick = function() {
     document.querySelector('#error-jugada').className = 'oculto';
+    document.querySelector('#boton-continuar-juego').className = 'oculto';
     document.querySelector('#boton-reinicio-juego').className = 'oculto';
     resetearJugadaUsuario(jugadaUsuario);
     juegaComputadora();
+
+    return false;
 }
 
 
