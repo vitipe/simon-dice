@@ -2,10 +2,11 @@
     TO-DO
 
 1. Un div que tape o algo para que no se pueda hacer click mientras la computadora juega.
-2. Ocultar boton "Jugar" al hacerle click.
+2. Mejorar el código y los nombres y eso
 3. Armar un leaderboard
 4. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
-5. Armar Bootstrap
+5. Poner todas las functions en calculos y armar un .js nuevo con lo que es manejo del DOM? es asi?
+6. Armar Bootstrap
 
 
 Modos de juego a ver si agrego?:
@@ -17,14 +18,14 @@ modo inverso o algo asi?
 
 let jugadaUsuario = []; //ver de mandarlo adentro de alguna function
 
-function obternerNumeroRandom() {
+function obtenerNumeroRandom() {
     let numeroRandom = Math.floor(Math.random() * 4 + 1); //El valor tiene que ser entre 1 y 4
     return numeroRandom;
 }
 
 function colorearBotones(jugadaComputadora) {
-    let delayColores = 1000;
-    let delayReseteo = 2000;
+    let DELAY_COLOR_JUGADA = 1000;
+    let DELAY_COLOR_NORMAL = 2000;
 
     for(let i = 0; i<jugadaComputadora.length;i++) {
 
@@ -32,14 +33,14 @@ function colorearBotones(jugadaComputadora) {
         
         setTimeout(function() {
             $botonEnJuego.className = 'en-juego';
-        }, delayColores);
+        }, DELAY_COLOR_JUGADA);
 
         setTimeout(function() {
             $botonEnJuego.className = '';
-        }, delayReseteo);
+        }, DELAY_COLOR_NORMAL);
 
-        delayColores += 1500;
-        delayReseteo += 1500;
+        DELAY_COLOR_JUGADA += 1500;
+        DELAY_COLOR_NORMAL += 1500;
     }
 }
 
@@ -49,7 +50,7 @@ function crearJugadaComputadora(turnoUsuario) {
     let jugadaComputadora = [];
     
     for (let i = 0; i<turnoUsuario; i++) { //probar usar ForEach?
-        jugadaComputadora.push(obternerNumeroRandom());    
+        jugadaComputadora.push(obtenerNumeroRandom());    
     }
 
     return jugadaComputadora;
@@ -57,7 +58,7 @@ function crearJugadaComputadora(turnoUsuario) {
 
 let jugadaComputadora = crearJugadaComputadora(turnoUsuario);
 
-function juegaComputadora() {
+function juegaComputadora() { //Aca poner para que tape los divs
     return colorearBotones(jugadaComputadora);
 }
 
@@ -76,7 +77,7 @@ function sumadorTurnoUsuario() {
     document.querySelector('#turno-usuario').textContent = "Turno #" + turnoUsuario;
 }
 
-function contadorPuntosUsuario() {
+function contadorPuntosUsuario() { //esto y lo de arriba no los puedo hacer en un solo calculo?
     let puntosUsuario = 0;
     for (let i = 0; i<jugadaComputadora.length; i++) {
         puntosUsuario++
@@ -89,7 +90,7 @@ function mostrarErrorJugada() {
     document.querySelector('#error-jugada').className = '';
     document.querySelector('#boton-continuar-juego').className = '';
     document.querySelector('#boton-reinicio-juego').className = '';
-    document.querySelector('#error-jugada').textContent = "No era esa jugada, pero lograste " + contadorPuntosUsuario() + " puntos!";
+    document.querySelector('#error-jugada').textContent = `No era esa jugada, pero lograste ${contadorPuntosUsuario()} puntos!`;
 }
 
 function ocultarErrorJugada() {
@@ -98,7 +99,11 @@ function ocultarErrorJugada() {
     document.querySelector('#boton-reinicio-juego').className = 'oculto';
 }
 
-function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) {
+function ocultarBotonJugar() {
+    document.querySelector('#boton-jugar').className = 'oculto';
+}
+
+function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subdividir en functions?
     let cantidadAciertos = 0;
     
     for (let i = 0; i<jugadaUsuario.length; i++) {
@@ -112,15 +117,16 @@ function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) {
     
     if (cantidadAciertos === jugadaComputadora.length){
         resetearJugadaUsuario(jugadaUsuario);
-        jugadaComputadora.push(obternerNumeroRandom());
         sumadorTurnoUsuario();
         contadorPuntosUsuario();
+        jugadaComputadora.push(obtenerNumeroRandom());
         juegaComputadora();
     } 
 }
 
 document.querySelector("#boton-jugar").onclick = function() {
     juegaComputadora();
+    ocultarBotonJugar();
 };
 
 
