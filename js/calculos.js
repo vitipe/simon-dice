@@ -1,8 +1,8 @@
 /*
     TO-DO
 
-1. Un div que tape o algo para que no se pueda hacer click mientras la computadora juega.
-2. Mejorar el código y los nombres y eso
+1. Ver donde poner bloquearUsuario y desbloquearUsuario para que ande.
+2. 
 3. Armar un leaderboard
 4. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
 5. Poner todas las functions en calculos y armar un .js nuevo con lo que es manejo del DOM? es asi?
@@ -42,6 +42,7 @@ function colorearBotones(jugadaComputadora) {
         DELAY_COLOR_JUGADA += 1500;
         DELAY_COLOR_NORMAL += 1500;
     }
+
 }
 
 let turnoUsuario = 1;
@@ -59,7 +60,7 @@ function crearJugadaComputadora(turnoUsuario) {
 let jugadaComputadora = crearJugadaComputadora(turnoUsuario);
 
 function juegaComputadora() { //Aca poner para que tape los divs
-    return colorearBotones(jugadaComputadora);
+    colorearBotones(jugadaComputadora);
 }
 
 function resetearJugadaUsuario(jugadaUsuario) {
@@ -101,6 +102,20 @@ function ocultarErrorJugada() {
 
 function ocultarBotonJugar() {
     document.querySelector('#boton-jugar').className = 'oculto';
+}
+
+function bloquearClickUsuario() {
+    document.querySelector('#div-1').style.pointerEvents = "none";
+    document.querySelector('#div-2').style.pointerEvents = "none";
+    document.querySelector('#div-3').style.pointerEvents = "none";
+    document.querySelector('#div-4').style.pointerEvents = "none";
+}
+
+function desbloquearClickUsuario() {
+    document.querySelector('#div-1').style.pointerEvents = "auto";
+    document.querySelector('#div-2').style.pointerEvents = "auto";
+    document.querySelector('#div-3').style.pointerEvents = "auto";
+    document.querySelector('#div-4').style.pointerEvents = "auto";
 }
 
 function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subdividir en functions?
