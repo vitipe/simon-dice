@@ -1,7 +1,7 @@
 /*
     TO-DO
 
-1. Ver donde poner bloquearUsuario y desbloquearUsuario para que ande.
+1. Ver si bloquear usuario y desbloquear usuario se gatillan cuando se tienen que gatillar
 2. 
 3. Armar un leaderboard
 4. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
@@ -24,13 +24,15 @@ function obtenerNumeroRandom() {
 }
 
 function colorearBotones(jugadaComputadora) {
-    let DELAY_COLOR_JUGADA = 1000;
-    let DELAY_COLOR_NORMAL = 2000;
+    let DELAY_COLOR_JUGADA = 500;
+    let DELAY_COLOR_NORMAL = 1000;
+    
+    bloquearClickUsuario();
 
     for(let i = 0; i<jugadaComputadora.length;i++) {
 
         let $botonEnJuego = document.querySelector(`#div-${jugadaComputadora[i]}`);
-        
+
         setTimeout(function() {
             $botonEnJuego.className = 'en-juego';
         }, DELAY_COLOR_JUGADA);
@@ -39,10 +41,15 @@ function colorearBotones(jugadaComputadora) {
             $botonEnJuego.className = '';
         }, DELAY_COLOR_NORMAL);
 
-        DELAY_COLOR_JUGADA += 1500;
-        DELAY_COLOR_NORMAL += 1500;
+        DELAY_COLOR_JUGADA += 1000;
+        DELAY_COLOR_NORMAL += 1000;
     }
 
+    setTimeout(function() {
+        desbloquearClickUsuario();
+    }, DELAY_COLOR_NORMAL - 1000);
+
+    
 }
 
 let turnoUsuario = 1;
