@@ -1,8 +1,8 @@
 /*
     TO-DO
 
-1. Ver si bloquear usuario y desbloquear usuario se gatillan cuando se tienen que gatillar
-2. 
+1.
+2. Pasar el código por el embellecedor de JS.
 3. Armar un leaderboard
 4. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
 5. Poner todas las functions en calculos y armar un .js nuevo con lo que es manejo del DOM? es asi?
@@ -10,13 +10,14 @@
 
 
 Modos de juego a ver si agrego?:
-Continuar desde donde le erraste
-Aumentar la velocidad a la cual te tira todos los colores
-modo inverso o algo asi?
+[X] Continuar desde donde le erraste
+[ ] Aumentar la velocidad a la cual te tira todos los colores
+[ ] modo inverso o algo asi?
 
 */
 
-let jugadaUsuario = []; //ver de mandarlo adentro de alguna function
+let jugadaUsuario = []; //ver de mandarlo adentro de alguna function, es la unica variable global que me quedó
+let jugadaComputadora = crearJugadaComputadora();
 
 function obtenerNumeroRandom() {
     let numeroRandom = Math.floor(Math.random() * 4 + 1); //El valor tiene que ser entre 1 y 4
@@ -48,13 +49,10 @@ function colorearBotones(jugadaComputadora) {
     setTimeout(function() {
         desbloquearClickUsuario();
     }, DELAY_COLOR_NORMAL - 1000);
-
-    
 }
 
-let turnoUsuario = 1;
-
-function crearJugadaComputadora(turnoUsuario) {
+function crearJugadaComputadora() {
+    let turnoUsuario = 1;
     let jugadaComputadora = [];
     
     for (let i = 0; i<turnoUsuario; i++) { //probar usar ForEach?
@@ -64,9 +62,7 @@ function crearJugadaComputadora(turnoUsuario) {
     return jugadaComputadora;
 }
 
-let jugadaComputadora = crearJugadaComputadora(turnoUsuario);
-
-function juegaComputadora() { //Aca poner para que tape los divs
+function juegaComputadora() {
     colorearBotones(jugadaComputadora);
 }
 
@@ -150,7 +146,6 @@ document.querySelector("#boton-jugar").onclick = function() {
     juegaComputadora();
     ocultarBotonJugar();
 };
-
 
 document.querySelector('#div-1').onclick = function(){
     jugadaUsuario.push(1);
