@@ -1,0 +1,48 @@
+.container-tablero {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 500px;
+    width: 600px;
+}
+
+#tablero-juego {
+    background-color: lightgray;
+}
+
+#div-1 {
+    background-color:#1ad771;
+}
+
+#div-2 {
+    background-color:#fb472e;
+}
+
+#div-3 {
+    background-color:#f5f821;
+}
+
+#div-4 {
+    background-color:#1e98db;
+}
+
+.en-juego {
+    opacity: 20%;
+}
+
+body {
+    background-color: rgb(206, 206, 206);
+}
+
+.oculto {
+    display: none;
+}
+
+#error-jugada {
+    font-size: 32px;
+    color: red;
+}
+
+#div-tapa-jugada {
+    opacity: 0%;
+}

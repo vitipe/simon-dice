@@ -1,48 +1,179 @@
-//TO-DO
-
-//Hacerlo con bootstrap?
-
-//Crear una base de 4 botones en el centro con 4 colores diferentes. A eso agregar un boton "jugar".
-
 /*
-En base a la interfaz de 4 botones.
+    TO-DO
 
-Tendria que haber un boton iniciar. Al hacer click, comienza el juego.
-
-Por cada boton hay un color y un ID (1,2,3,4), al hacer click en "jugar" tendria que tomar uno de los botones random y cambiarle el color.
-Al mismo tiempo, crear un array que contenga el/los numeros y que haga un random y en base a ese random ilumine el boton.
-Si es correcto, sumar a ese array otro random 1,2,3,4 y que ilumne los dos seguidos del otro. Ademas crear un contador de "correctos"
-Si es incorrecto, msj de que el usuario le erró y mostrar cuantas correctas llegó a hacer.
-Agregar set.timeout para que tarde entre mostrar uno y otro. ver como hacer para que el boton quede "encendido" medio segundo o algo asi.
-eventListener para escuchar la respuesta del usuario y que la espere la funcion?
+1.
+2. Pasar el código por el embellecedor de JS.
+3. Armar un leaderboard
+4. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
+5. Poner todas las functions en calculos y armar un .js nuevo con lo que es manejo del DOM? es asi?
+6. Armar Bootstrap
 
 
-Usuario clickea boton "jugar"
-Turno computadora:
-    dentro de un array vacío "turnoComputadora" pushear un numero random entre 1 y 4
-    Por cada numero que hay adentro del array:
-        tomar ese numero y cambiar de color ese numero (opacity?)
-        despues de ¿1 seg? volver a cambiar ese color al original
-        Terminar? esperar? ¿Como pasar al turno del usuario?
-
-turnoUsuario:
-    crear un array ¿u objeto? llamado "turnoUsuario" vacío
-    por cada click que hace el usuario, ingresar el id? o name de ese boton al array turnoUsuario
-    if turnoUsuario.length = turnoComputadora.length:
-        if turnoUsuario = turnoComputadora
-            sumar un nuevo valor random entre 1 y 4 al array de turnoComputadora
-            gatillar turnoComputadora de nuevo
-            sumar 1 al n° de turno (poner un numero de turno visible arrancando de 1)
-        if turnoUsuario =! turnoComputadora
-            mostrar mensaje de que el usuario le erró
-            resetear turno
-            resetear juego (vaciar turnoComputadora?)
-            pedir hacer click en jugar de nuevo
-
-
-
-
-
-
+Modos de juego a ver si agrego?:
+[X] Continuar desde donde le erraste
+[ ] Aumentar la velocidad a la cual te tira todos los colores
+[ ] modo inverso o algo asi?
 
 */
+
+let jugadaUsuario = []; //ver de mandarlo adentro de alguna function, es la unica variable global que me quedó
+let jugadaComputadora = crearJugadaComputadora();
+
+function obtenerNumeroRandom() {
+    let numeroRandom = Math.floor(Math.random() * 4 + 1); //El valor tiene que ser entre 1 y 4
+    return numeroRandom;
+}
+
+function colorearBotones(jugadaComputadora) {
+    let DELAY_COLOR_JUGADA = 500;
+    let DELAY_COLOR_NORMAL = 1000;
+    
+    bloquearClickUsuario();
+
+    for(let i = 0; i<jugadaComputadora.length;i++) {
+
+        let $botonEnJuego = document.querySelector(`#div-${jugadaComputadora[i]}`);
+
+        setTimeout(function() {
+            $botonEnJuego.className = 'en-juego';
+        }, DELAY_COLOR_JUGADA);
+
+        setTimeout(function() {
+            $botonEnJuego.className = '';
+        }, DELAY_COLOR_NORMAL);
+
+        DELAY_COLOR_JUGADA += 1000;
+        DELAY_COLOR_NORMAL += 1000;
+    }
+
+    setTimeout(function() {
+        desbloquearClickUsuario();
+    }, DELAY_COLOR_NORMAL - 1000);
+}
+
+function crearJugadaComputadora() {
+    let turnoUsuario = 1;
+    let jugadaComputadora = [];
+    
+    for (let i = 0; i<turnoUsuario; i++) { //probar usar ForEach?
+        jugadaComputadora.push(obtenerNumeroRandom());    
+    }
+
+    return jugadaComputadora;
+}
+
+function juegaComputadora() {
+    colorearBotones(jugadaComputadora);
+}
+
+function resetearJugadaUsuario(jugadaUsuario) {
+
+    for (let i = 1; i <= jugadaUsuario.length;) {
+        jugadaUsuario.pop(jugadaUsuario);
+    }
+}
+
+function sumadorTurnoUsuario() {
+    let turnoUsuario = 0;
+    for (let i = 0; i<jugadaComputadora.length; i++) {
+        turnoUsuario++
+    }
+    document.querySelector('#turno-usuario').textContent = "Turno #" + turnoUsuario;
+}
+
+function contadorPuntosUsuario() { //esto y lo de arriba no los puedo hacer en un solo calculo?
+    let puntosUsuario = 0;
+    for (let i = 0; i<jugadaComputadora.length; i++) {
+        puntosUsuario++
+    }
+
+    return puntosUsuario - 1;
+}
+
+function mostrarErrorJugada() {
+    document.querySelector('#error-jugada').className = '';
+    document.querySelector('#boton-continuar-juego').className = '';
+    document.querySelector('#boton-reinicio-juego').className = '';
+    document.querySelector('#error-jugada').textContent = `No era esa jugada, pero lograste ${contadorPuntosUsuario()} puntos!`;
+}
+
+function ocultarErrorJugada() {
+    document.querySelector('#error-jugada').className = 'oculto';
+    document.querySelector('#boton-continuar-juego').className = 'oculto';
+    document.querySelector('#boton-reinicio-juego').className = 'oculto';
+}
+
+function ocultarBotonJugar() {
+    document.querySelector('#boton-jugar').className = 'oculto';
+}
+
+function bloquearClickUsuario() {
+    document.querySelector('#div-1').style.pointerEvents = "none";
+    document.querySelector('#div-2').style.pointerEvents = "none";
+    document.querySelector('#div-3').style.pointerEvents = "none";
+    document.querySelector('#div-4').style.pointerEvents = "none";
+}
+
+function desbloquearClickUsuario() {
+    document.querySelector('#div-1').style.pointerEvents = "auto";
+    document.querySelector('#div-2').style.pointerEvents = "auto";
+    document.querySelector('#div-3').style.pointerEvents = "auto";
+    document.querySelector('#div-4').style.pointerEvents = "auto";
+}
+
+function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subdividir en functions?
+    let cantidadAciertos = 0;
+    
+    for (let i = 0; i<jugadaUsuario.length; i++) {
+
+        if (jugadaUsuario[i] === jugadaComputadora[i]) {
+            cantidadAciertos++;
+        } else {
+            mostrarErrorJugada();
+        }
+    }
+    
+    if (cantidadAciertos === jugadaComputadora.length){
+        resetearJugadaUsuario(jugadaUsuario);
+        sumadorTurnoUsuario();
+        contadorPuntosUsuario();
+        jugadaComputadora.push(obtenerNumeroRandom());
+        juegaComputadora();
+    } 
+}
+
+document.querySelector("#boton-jugar").onclick = function() {
+    juegaComputadora();
+    ocultarBotonJugar();
+};
+
+document.querySelector('#div-1').onclick = function(){
+    jugadaUsuario.push(1);
+    chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
+}
+
+document.querySelector('#div-2').onclick = function(){
+    jugadaUsuario.push(2)
+    chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
+}
+
+document.querySelector('#div-3').onclick = function(){
+    jugadaUsuario.push(3)
+    chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
+}
+
+document.querySelector('#div-4').onclick = function(){
+    jugadaUsuario.push(4)
+    chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
+}
+
+document.querySelector('#boton-continuar-juego').onclick = function() {
+    ocultarErrorJugada();
+    resetearJugadaUsuario(jugadaUsuario);
+    juegaComputadora();
+
+    return false;
+}
+
+
+
