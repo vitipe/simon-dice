@@ -1,8 +1,8 @@
 /*
     TO-DO
 
-1.
-2. Pasar el código por el embellecedor de JS.
+1. Ubicar el juego en el centro de la página.
+2. 
 3. Armar un leaderboard
 4. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
 5. Poner todas las functions en calculos y armar un .js nuevo con lo que es manejo del DOM? es asi?
@@ -112,6 +112,11 @@ function bloquearClickUsuario() {
     document.querySelector('#div-2').style.pointerEvents = "none";
     document.querySelector('#div-3').style.pointerEvents = "none";
     document.querySelector('#div-4').style.pointerEvents = "none";
+
+    document.querySelector('#tablero-juego').style.borderStyle = "solid";
+    document.querySelector('#tablero-juego').style.borderColor = "red";
+    document.querySelector('#tablero-juego').style.borderRadius = "6px";
+
 }
 
 function desbloquearClickUsuario() {
@@ -119,6 +124,10 @@ function desbloquearClickUsuario() {
     document.querySelector('#div-2').style.pointerEvents = "auto";
     document.querySelector('#div-3').style.pointerEvents = "auto";
     document.querySelector('#div-4').style.pointerEvents = "auto";
+
+    document.querySelector('#tablero-juego').style.borderStyle = "";
+    document.querySelector('#tablero-juego').style.borderColor = "";
+    document.querySelector('#tablero-juego').style.borderRadius = "";
 }
 
 function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subdividir en functions?
