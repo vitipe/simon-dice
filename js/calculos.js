@@ -27,10 +27,10 @@ function obtenerNumeroRandom() {
 function colorearBotones(jugadaComputadora) {
     let DELAY_COLOR_JUGADA = 500;
     let DELAY_COLOR_NORMAL = 1000;
-    
+
     bloquearClickUsuario();
 
-    for(let i = 0; i<jugadaComputadora.length;i++) {
+    for (let i = 0; i < jugadaComputadora.length; i++) {
 
         let $botonEnJuego = document.querySelector(`#div-${jugadaComputadora[i]}`);
 
@@ -54,9 +54,9 @@ function colorearBotones(jugadaComputadora) {
 function crearJugadaComputadora() {
     let turnoUsuario = 1;
     let jugadaComputadora = [];
-    
-    for (let i = 0; i<turnoUsuario; i++) { //probar usar ForEach?
-        jugadaComputadora.push(obtenerNumeroRandom());    
+
+    for (let i = 0; i < turnoUsuario; i++) { //probar usar ForEach?
+        jugadaComputadora.push(obtenerNumeroRandom());
     }
 
     return jugadaComputadora;
@@ -75,7 +75,7 @@ function resetearJugadaUsuario(jugadaUsuario) {
 
 function sumadorTurnoUsuario() {
     let turnoUsuario = 0;
-    for (let i = 0; i<jugadaComputadora.length; i++) {
+    for (let i = 0; i < jugadaComputadora.length; i++) {
         turnoUsuario++
     }
     document.querySelector('#turno-usuario').textContent = "Turno #" + turnoUsuario;
@@ -83,7 +83,7 @@ function sumadorTurnoUsuario() {
 
 function contadorPuntosUsuario() { //esto y lo de arriba no los puedo hacer en un solo calculo?
     let puntosUsuario = 0;
-    for (let i = 0; i<jugadaComputadora.length; i++) {
+    for (let i = 0; i < jugadaComputadora.length; i++) {
         puntosUsuario++
     }
 
@@ -123,8 +123,8 @@ function desbloquearClickUsuario() {
 
 function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subdividir en functions?
     let cantidadAciertos = 0;
-    
-    for (let i = 0; i<jugadaUsuario.length; i++) {
+
+    for (let i = 0; i < jugadaUsuario.length; i++) {
 
         if (jugadaUsuario[i] === jugadaComputadora[i]) {
             cantidadAciertos++;
@@ -132,14 +132,14 @@ function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subdividi
             mostrarErrorJugada();
         }
     }
-    
-    if (cantidadAciertos === jugadaComputadora.length){
+
+    if (cantidadAciertos === jugadaComputadora.length) {
         resetearJugadaUsuario(jugadaUsuario);
         sumadorTurnoUsuario();
         contadorPuntosUsuario();
         jugadaComputadora.push(obtenerNumeroRandom());
         juegaComputadora();
-    } 
+    }
 }
 
 document.querySelector("#boton-jugar").onclick = function() {
@@ -147,22 +147,22 @@ document.querySelector("#boton-jugar").onclick = function() {
     ocultarBotonJugar();
 };
 
-document.querySelector('#div-1').onclick = function(){
+document.querySelector('#div-1').onclick = function() {
     jugadaUsuario.push(1);
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
 
-document.querySelector('#div-2').onclick = function(){
+document.querySelector('#div-2').onclick = function() {
     jugadaUsuario.push(2)
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
 
-document.querySelector('#div-3').onclick = function(){
+document.querySelector('#div-3').onclick = function() {
     jugadaUsuario.push(3)
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
 
-document.querySelector('#div-4').onclick = function(){
+document.querySelector('#div-4').onclick = function() {
     jugadaUsuario.push(4)
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
@@ -174,6 +174,3 @@ document.querySelector('#boton-continuar-juego').onclick = function() {
 
     return false;
 }
-
-
-
