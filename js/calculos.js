@@ -2,7 +2,8 @@
     TO-DO
 
 1. Ubicar el juego en el centro de la página.
-2. 
+1/2. Que el juego comience bloqueado.
+2. Que el color de clickeado sea diferente que el de mostrar jugadaComputadora
 3. Armar un leaderboard
 4. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
 5. Poner todas las functions en calculos y armar un .js nuevo con lo que es manejo del DOM? es asi?
@@ -130,6 +131,16 @@ function desbloquearClickUsuario() {
     document.querySelector('#tablero-juego').style.borderRadius = "";
 }
 
+function colorearClicksUsuario(divClickeado) {
+    setTimeout(function() {
+        document.querySelector(divClickeado).className = 'en-juego';
+    }, 0);
+
+    setTimeout(function() {
+        document.querySelector(divClickeado).className = '';
+    }, 75);
+}
+
 function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subdividir en functions?
     let cantidadAciertos = 0;
 
@@ -157,21 +168,25 @@ document.querySelector("#boton-jugar").onclick = function() {
 };
 
 document.querySelector('#div-1').onclick = function() {
+    colorearClicksUsuario('#div-1');
     jugadaUsuario.push(1);
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
 
 document.querySelector('#div-2').onclick = function() {
+    colorearClicksUsuario('#div-2');
     jugadaUsuario.push(2)
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
 
 document.querySelector('#div-3').onclick = function() {
+    colorearClicksUsuario('#div-3');
     jugadaUsuario.push(3)
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
 
 document.querySelector('#div-4').onclick = function() {
+    colorearClicksUsuario('#div-4');
     jugadaUsuario.push(4)
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
