@@ -47,6 +47,15 @@ form {
 
 header {
     text-align: center;
+    font-family: monospace;
+}
+
+button {
+    font-family: monospace;
+}
+
+strong {
+    font-family: monospace;
 }
 
 .oculto {
