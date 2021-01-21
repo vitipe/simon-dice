@@ -1,7 +1,7 @@
 /*
     TO-DO
 
-1.
+1. Mensaje que diga que vas mejorando si aumentaste los puntos con respecto a la ultima jugada?
 2. Tirare el pull a Fabri a ver que te dice.
 3. Armar un leaderboard
 4. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
@@ -96,7 +96,12 @@ function mostrarErrorJugada() {
     document.querySelector('#error-jugada').className = '';
     document.querySelector('#boton-continuar-juego').className = '';
     document.querySelector('#boton-reinicio-juego').className = '';
-    document.querySelector('#error-jugada').textContent = `No era esa jugada, pero lograste ${contadorPuntosUsuario()} puntos!`;
+    
+    if (contadorPuntosUsuario() === 1) {
+        document.querySelector('#error-jugada').textContent = `No era esa jugada! lograste ${contadorPuntosUsuario()} punto.`;
+    } else {
+        document.querySelector('#error-jugada').textContent = `No era esa jugada! lograste ${contadorPuntosUsuario()} puntos.`;
+    }
 }
 
 function ocultarErrorJugada() {
@@ -198,4 +203,8 @@ document.querySelector('#boton-continuar-juego').onclick = function() {
     juegaComputadora();
 
     return false;
+}
+
+document.querySelector('#boton-reinicio-juego').onclick = function() {
+    document.querySelector('#form-juego').reset();
 }
