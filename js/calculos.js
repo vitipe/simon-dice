@@ -1,24 +1,25 @@
 /*
     TO-DO
 
-1. Ubicar el juego en el centro de la página.
-1/2. Que el juego comience bloqueado.
-2. Que el color de clickeado sea diferente que el de mostrar jugadaComputadora
+1.
+2. Tirare el pull a Fabri a ver que te dice.
 3. Armar un leaderboard
 4. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
 5. Poner todas las functions en calculos y armar un .js nuevo con lo que es manejo del DOM? es asi?
-6. Armar Bootstrap
+6. Armar Bootstrap, crear un branch nuevo o usar este mismo y dejar el juego andando bien en el master.
 
 
 Modos de juego a ver si agrego?:
 [X] Continuar desde donde le erraste
 [ ] Aumentar la velocidad a la cual te tira todos los colores
+    -Agregar boton de aumentar velocidad
 [ ] modo inverso o algo asi?
 
 */
 
 let jugadaUsuario = []; //ver de mandarlo adentro de alguna function, es la unica variable global que me quedó
 let jugadaComputadora = crearJugadaComputadora();
+bloquearClickUsuario();
 
 function obtenerNumeroRandom() {
     let numeroRandom = Math.floor(Math.random() * 4 + 1); //El valor tiene que ser entre 1 y 4
@@ -115,8 +116,8 @@ function bloquearClickUsuario() {
     document.querySelector('#div-4').style.pointerEvents = "none";
 
     document.querySelector('#tablero-juego').style.borderStyle = "solid";
-    document.querySelector('#tablero-juego').style.borderColor = "red";
-    document.querySelector('#tablero-juego').style.borderRadius = "6px";
+    document.querySelector('#tablero-juego').style.borderColor = "black";
+    document.querySelector('#tablero-juego').style.borderRadius = "2px";
 
 }
 
@@ -133,7 +134,7 @@ function desbloquearClickUsuario() {
 
 function colorearClicksUsuario(divClickeado) {
     setTimeout(function() {
-        document.querySelector(divClickeado).className = 'en-juego';
+        document.querySelector(divClickeado).className = 'clickeado';
     }, 0);
 
     setTimeout(function() {
