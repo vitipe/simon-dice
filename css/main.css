@@ -32,6 +32,17 @@
 
 body {
     background-color: rgb(206, 206, 206);
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    width: 650px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
 }
 
 .oculto {
