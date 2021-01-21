@@ -30,6 +30,10 @@
     opacity: 20%;
 }
 
+.clickeado {
+    opacity: 80%    
+}
+
 body {
     background-color: rgb(206, 206, 206);
     margin: 0;
