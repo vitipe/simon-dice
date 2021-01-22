@@ -34,7 +34,7 @@ function colorearBotones(jugadaComputadora) {
 
     for (let i = 0; i < jugadaComputadora.length; i++) {
 
-        let $botonEnJuego = document.querySelector(`#div-${jugadaComputadora[i]}`);
+        let $botonEnJuego = document.querySelector(`#cuadro-${jugadaComputadora[i]}`);
 
         setTimeout(function() {
             $botonEnJuego.className = 'en-juego';
@@ -115,10 +115,10 @@ function ocultarBotonJugar() {
 }
 
 function bloquearClickUsuario() {
-    document.querySelector('#div-1').style.pointerEvents = "none";
-    document.querySelector('#div-2').style.pointerEvents = "none";
-    document.querySelector('#div-3').style.pointerEvents = "none";
-    document.querySelector('#div-4').style.pointerEvents = "none";
+    document.querySelector('#cuadro-1').style.pointerEvents = "none";
+    document.querySelector('#cuadro-2').style.pointerEvents = "none";
+    document.querySelector('#cuadro-3').style.pointerEvents = "none";
+    document.querySelector('#cuadro-4').style.pointerEvents = "none";
 
     document.querySelector('#tablero-juego').style.borderStyle = "solid";
     document.querySelector('#tablero-juego').style.borderColor = "black";
@@ -127,27 +127,27 @@ function bloquearClickUsuario() {
 }
 
 function desbloquearClickUsuario() {
-    document.querySelector('#div-1').style.pointerEvents = "auto";
-    document.querySelector('#div-2').style.pointerEvents = "auto";
-    document.querySelector('#div-3').style.pointerEvents = "auto";
-    document.querySelector('#div-4').style.pointerEvents = "auto";
+    document.querySelector('#cuadro-1').style.pointerEvents = "auto";
+    document.querySelector('#cuadro-2').style.pointerEvents = "auto";
+    document.querySelector('#cuadro-3').style.pointerEvents = "auto";
+    document.querySelector('#cuadro-4').style.pointerEvents = "auto";
 
     document.querySelector('#tablero-juego').style.borderStyle = "";
     document.querySelector('#tablero-juego').style.borderColor = "";
     document.querySelector('#tablero-juego').style.borderRadius = "";
 }
 
-function colorearClicksUsuario(divClickeado) {
+function colorearClicksUsuario(cuadroClickeado) {
     setTimeout(function() {
-        document.querySelector(divClickeado).className = 'clickeado';
+        document.querySelector(cuadroClickeado).className = 'clickeado';
     }, 0);
 
     setTimeout(function() {
-        document.querySelector(divClickeado).className = '';
+        document.querySelector(cuadroClickeado).className = '';
     }, 75);
 }
 
-function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subdividir en functions?
+function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subcuadroidir en functions?
     let cantidadAciertos = 0;
 
     for (let i = 0; i < jugadaUsuario.length; i++) {
@@ -173,26 +173,26 @@ document.querySelector("#boton-jugar").onclick = function() {
     ocultarBotonJugar();
 };
 
-document.querySelector('#div-1').onclick = function() {
-    colorearClicksUsuario('#div-1');
+document.querySelector('#cuadro-1').onclick = function() {
+    colorearClicksUsuario('#cuadro-1');
     jugadaUsuario.push(1);
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
 
-document.querySelector('#div-2').onclick = function() {
-    colorearClicksUsuario('#div-2');
+document.querySelector('#cuadro-2').onclick = function() {
+    colorearClicksUsuario('#cuadro-2');
     jugadaUsuario.push(2)
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
 
-document.querySelector('#div-3').onclick = function() {
-    colorearClicksUsuario('#div-3');
+document.querySelector('#cuadro-3').onclick = function() {
+    colorearClicksUsuario('#cuadro-3');
     jugadaUsuario.push(3)
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
 
-document.querySelector('#div-4').onclick = function() {
-    colorearClicksUsuario('#div-4');
+document.querySelector('#cuadro-4').onclick = function() {
+    colorearClicksUsuario('#cuadro-4');
     jugadaUsuario.push(4)
     chequearResultadoJugada(jugadaUsuario, jugadaComputadora);
 }
