@@ -1,10 +1,10 @@
 let jugadaUsuario = []; //ver de mandarlo adentro de alguna function, es la unica variable global que me quedó
 let jugadaComputadora = crearJugadaComputadora();
-bloquearClickUsuario();
+bloquearClickUsuario("Bienvenido al simon dice!");
 
 
 function obtenerNumeroRandom() {
-    let numeroRandom = Math.floor(Math.random() * 4 + 1); //El valor tiene que ser entre 1 y 4
+    let numeroRandom = Math.ceil(Math.random() * 4);
     return numeroRandom;
 }
 
@@ -12,7 +12,7 @@ function colorearBotones(jugadaComputadora) {
     let DELAY_COLOR_JUGADA = 500;
     let DELAY_COLOR_NORMAL = 1000;
 
-    bloquearClickUsuario();
+    bloquearClickUsuario("Juega la computadora");
 
     for (let i = 0; i < jugadaComputadora.length; i++) {
 
@@ -96,15 +96,13 @@ function ocultarBotonJugar() {
     document.querySelector('#boton-jugar').className = 'oculto';
 }
 
-function bloquearClickUsuario() {
+function bloquearClickUsuario(titulo) {
     document.querySelector('#cuadro-1').style.pointerEvents = "none";
     document.querySelector('#cuadro-2').style.pointerEvents = "none";
     document.querySelector('#cuadro-3').style.pointerEvents = "none";
     document.querySelector('#cuadro-4').style.pointerEvents = "none";
 
-    document.querySelector('#tablero-juego').style.borderStyle = "solid";
-    document.querySelector('#tablero-juego').style.borderColor = "black";
-    document.querySelector('#tablero-juego').style.borderRadius = "2px";
+    document.querySelector('#cartel-bienvenida').textContent = titulo;
 
 }
 
@@ -114,9 +112,7 @@ function desbloquearClickUsuario() {
     document.querySelector('#cuadro-3').style.pointerEvents = "auto";
     document.querySelector('#cuadro-4').style.pointerEvents = "auto";
 
-    document.querySelector('#tablero-juego').style.borderStyle = "";
-    document.querySelector('#tablero-juego').style.borderColor = "";
-    document.querySelector('#tablero-juego').style.borderRadius = "";
+    document.querySelector('#cartel-bienvenida').textContent = "Jugás vos";
 }
 
 function colorearClicksUsuario(cuadroClickeado) {
@@ -187,6 +183,9 @@ document.querySelector('#boton-continuar-juego').onclick = function() {
     return false;
 }
 
-document.querySelector('#boton-reinicio-juego').onclick = function() {
-    document.querySelector('#form-juego').reset();
+document.querySelector('#boton-reinicio-juego').onclick = function() { // todavía no funciona, solo resetea el form
+    jugadaUsuario = [];
+    jugadaComputadora = [];
+    turnoUsuario = 0;
+    puntosUsuario = 0;
 }

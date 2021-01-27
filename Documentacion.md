@@ -22,13 +22,13 @@ The site would have a header with a welcome message, four "buttons" (element's l
 5. Poner todas las functions en calculos y armar un .js nuevo con lo que es manejo del DOM? es asi?
 6. Armar Bootstrap, crear un branch nuevo o usar este mismo y dejar el juego andando bien en el master.
 
-Modos de juego a ver si agrego?:
+**Modos de juego a ver si agrego?:**
 [X] Continuar desde donde le erraste
 [ ] Aumentar la velocidad a la cual te tira todos los colores
     -Agregar boton de aumentar velocidad
 [ ] modo inverso o algo asi?
 
-###Cosas a mejorar a partir de ver la clase 10:
+**###Cosas a mejorar a partir de ver la clase 10:**
 1. Invertir opacity colores
 2. Ver transition 500ms para que se coloreen los cuadros
 3. function reiniciadora: vuelve jugadaUsuario, jugadaComputadora y turno a los valores estándar.
