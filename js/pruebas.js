@@ -12,4 +12,3 @@ function validarNumeroRandom() {
         return 'Obtener numero random no generó un valor entre 1 y 4'
     }
 }
-
