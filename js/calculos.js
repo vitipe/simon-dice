@@ -8,6 +8,10 @@ function obtenerNumeroRandom() {
     return numeroRandom;
 }
 
+function prenderLuzBoton() {
+    
+}
+
 function colorearBotones(jugadaComputadora) {
     let DELAY_COLOR_JUGADA = 500;
     let DELAY_COLOR_NORMAL = 1000;
@@ -19,11 +23,13 @@ function colorearBotones(jugadaComputadora) {
         let $botonEnJuego = document.querySelector(`#cuadro-${jugadaComputadora[i]}`);
 
         setTimeout(function() {
-            $botonEnJuego.className = 'en-juego';
+            $botonEnJuego.style.opacity = '100%';
+            $botonEnJuego.style.transition = 'opacity 250ms';
         }, DELAY_COLOR_JUGADA);
 
         setTimeout(function() {
-            $botonEnJuego.className = 'apagado';
+            $botonEnJuego.style.opacity = '40%';
+            $botonEnJuego.style.transition = 'opacity 250ms';
         }, DELAY_COLOR_NORMAL);
 
         DELAY_COLOR_JUGADA += 1000;
@@ -117,11 +123,11 @@ function desbloquearClickUsuario() {
 
 function colorearClicksUsuario(cuadroClickeado) {
     setTimeout(function() {
-        document.querySelector(cuadroClickeado).className = 'clickeado';
+        document.querySelector(cuadroClickeado).style.opacity = '100%';
     }, 0);
 
     setTimeout(function() {
-        document.querySelector(cuadroClickeado).className = '';
+        document.querySelector(cuadroClickeado).style.opacity = '40%';
     }, 75);
 }
 
@@ -184,12 +190,5 @@ document.querySelector('#boton-continuar-juego').onclick = function() {
 }
 
 document.querySelector('#boton-reinicio-juego').onclick = function() { // todavía no funciona, solo resetea el form
-    jugadaUsuario = [];
-    jugadaComputadora = [];
-    turnoUsuario = 1;
-    puntosUsuario = 1;
-
-    document.querySelector('#boton-jugar').className = '';
-
-    return false;
+    
 }
