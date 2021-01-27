@@ -23,7 +23,7 @@ function colorearBotones(jugadaComputadora) {
         }, DELAY_COLOR_JUGADA);
 
         setTimeout(function() {
-            $botonEnJuego.className = '';
+            $botonEnJuego.className = 'apagado';
         }, DELAY_COLOR_NORMAL);
 
         DELAY_COLOR_JUGADA += 1000;
@@ -186,6 +186,10 @@ document.querySelector('#boton-continuar-juego').onclick = function() {
 document.querySelector('#boton-reinicio-juego').onclick = function() { // todavía no funciona, solo resetea el form
     jugadaUsuario = [];
     jugadaComputadora = [];
-    turnoUsuario = 0;
-    puntosUsuario = 0;
+    turnoUsuario = 1;
+    puntosUsuario = 1;
+
+    document.querySelector('#boton-jugar').className = '';
+
+    return false;
 }

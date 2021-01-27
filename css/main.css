@@ -28,6 +28,12 @@
 
 .en-juego {
     opacity: 20%;
+    transition: opacity 250ms;
+}
+
+.apagado {
+    opacity: 100%;
+    transition: opacity 250ms;
 }
 
 .clickeado {
