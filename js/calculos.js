@@ -1,25 +1,7 @@
-/*
-    TO-DO
-
-1. Mensaje que diga que vas mejorando si aumentaste los puntos con respecto a la ultima jugada?
-2. Tirare el pull a Fabri a ver que te dice.
-3. Armar un leaderboard
-4. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
-5. Poner todas las functions en calculos y armar un .js nuevo con lo que es manejo del DOM? es asi?
-6. Armar Bootstrap, crear un branch nuevo o usar este mismo y dejar el juego andando bien en el master.
-
-
-Modos de juego a ver si agrego?:
-[X] Continuar desde donde le erraste
-[ ] Aumentar la velocidad a la cual te tira todos los colores
-    -Agregar boton de aumentar velocidad
-[ ] modo inverso o algo asi?
-
-*/
-
 let jugadaUsuario = []; //ver de mandarlo adentro de alguna function, es la unica variable global que me quedó
 let jugadaComputadora = crearJugadaComputadora();
 bloquearClickUsuario();
+
 
 function obtenerNumeroRandom() {
     let numeroRandom = Math.floor(Math.random() * 4 + 1); //El valor tiene que ser entre 1 y 4
@@ -171,7 +153,7 @@ function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subcuadro
 document.querySelector("#boton-jugar").onclick = function() {
     juegaComputadora();
     ocultarBotonJugar();
-};
+}
 
 document.querySelector('#cuadro-1').onclick = function() {
     colorearClicksUsuario('#cuadro-1');
