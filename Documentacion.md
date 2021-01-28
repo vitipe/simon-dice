@@ -29,8 +29,8 @@ The site would have a header with a welcome message, four "buttons" (element's l
 [ ] modo inverso o algo asi?
 
 **###Cosas a mejorar a partir de ver la clase 10:**
-1. Invertir opacity colores
-2. Ver transition 500ms para que se coloreen los cuadros
-3. function reiniciadora: vuelve jugadaUsuario, jugadaComputadora y turno a los valores estándar.
-4. Usar math.ceil en numero random y con eso puedo sacar el "+1"
-5. Agregar bootstrap, armar el tablero y el header todo con el grid de bootstrap.
+1. 
+2.
+1. function reiniciadora: vuelve jugadaUsuario, jugadaComputadora y turno a los valores estándar.
+2. 
+3. Agregar bootstrap, armar el tablero y el header todo con el grid de bootstrap.
