@@ -8,10 +8,6 @@ function obtenerNumeroRandom() {
     return numeroRandom;
 }
 
-function prenderLuzBoton() {
-    
-}
-
 function colorearBotones(jugadaComputadora) {
     let DELAY_COLOR_JUGADA = 500;
     let DELAY_COLOR_NORMAL = 1000;
