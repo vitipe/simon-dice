@@ -19,11 +19,13 @@ function colorearBotones(jugadaComputadora) {
         let $botonEnJuego = document.querySelector(`#cuadro-${jugadaComputadora[i]}`);
 
         setTimeout(function() {
-            $botonEnJuego.className = 'en-juego';
+            $botonEnJuego.style.opacity = '100%';
+            $botonEnJuego.style.transition = 'opacity 250ms';
         }, DELAY_COLOR_JUGADA);
 
         setTimeout(function() {
-            $botonEnJuego.className = '';
+            $botonEnJuego.style.opacity = '40%';
+            $botonEnJuego.style.transition = 'opacity 250ms';
         }, DELAY_COLOR_NORMAL);
 
         DELAY_COLOR_JUGADA += 1000;
