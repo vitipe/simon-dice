@@ -13,21 +13,31 @@
 </header>
 <body>
     <form id="form-juego">
-        <div class="container-tablero" id="tablero-juego">
-            <div id="cuadro-1">
-                <p>1</p>
+        <div class="container" id="tablero-juego">
+            <div class="row">
+                <div class="col-sm">
+                    <div id="cuadro-1" class="cuadro">1</div>
+                </div>
+                <div class="col-sm">
+                    <div id="cuadro-2" class="cuadro">
+                        <p>2</p>
+                    </div>
+                </div>
             </div>
-            <div id="cuadro-2">
-                <p>2</p>
+            <div class="row">
+                <div class="col-sm">
+                    <div id="cuadro-3" class="cuadro">
+                        <p>3</p>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div id="cuadro-4" class="cuadro">
+                        <p>4</p>
+                    </div>
+                </div>
             </div>
-            <div id="cuadro-3">
-                <p>3</p>
-            </div>
-            <div id="cuadro-4">
-                <p>4</p>
-            </div>
-            <p id="turno-usuario">Turno #1</p>
         </div>
+        <p id="turno-usuario">Turno #1</p>
         <strong class="oculto" id="error-jugada">Le erraste :(</strong>
         <div id="botones-juego">
             <button class="oculto" id="boton-continuar-juego">Querés intentar de nuevo?</button>

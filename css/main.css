@@ -6,6 +6,12 @@
     width: 600px;
 }
 
+.cuadro {
+    height: 200px;
+    opacity: 0.5;
+    transition: opacity 500ms;
+}
+
 #tablero-juego {
     background-color: lightgray;
 }
