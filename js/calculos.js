@@ -16,16 +16,16 @@ function colorearBotones(jugadaComputadora) {
 
     for (let i = 0; i < jugadaComputadora.length; i++) {
 
-        let $botonEnJuego = document.querySelector(`#cuadro-${jugadaComputadora[i]}`);
+        let $cuadroEnJuego = document.querySelector(`#cuadro-${jugadaComputadora[i]}`);
 
         setTimeout(function() {
-            $botonEnJuego.style.opacity = '100%';
-            $botonEnJuego.style.transition = 'opacity 250ms';
+            $cuadroEnJuego.style.opacity = '100%';
+            $cuadroEnJuego.style.transition = 'opacity 250ms';
         }, DELAY_COLOR_JUGADA);
 
         setTimeout(function() {
-            $botonEnJuego.style.opacity = '40%';
-            $botonEnJuego.style.transition = 'opacity 250ms';
+            $cuadroEnJuego.style.opacity = '40%';
+            $cuadroEnJuego.style.transition = 'opacity 250ms';
         }, DELAY_COLOR_NORMAL);
 
         DELAY_COLOR_JUGADA += 1000;
@@ -42,7 +42,7 @@ function crearJugadaComputadora() {
     let turnoUsuario = 1;
     let jugadaComputadora = [];
 
-    for (let i = 0; i < turnoUsuario; i++) { //probar usar ForEach?
+    for (let i = 0; i < turnoUsuario; i++) {
         jugadaComputadora.push(obtenerNumeroRandom());
     }
 
@@ -73,12 +73,7 @@ function sumadorTurnoUsuario() {
 }
 
 function contadorPuntosUsuario() {
-    let puntosUsuario = 0;
-    for (let i = 0; i < jugadaComputadora.length; i++) {
-        puntosUsuario++
-    }
-
-    return puntosUsuario - 1;
+    return jugadaComputadora.length - 1;
 }
 
 function mostrarErrorJugada() {
@@ -142,7 +137,6 @@ function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subcuadro
     if (cantidadAciertos === jugadaComputadora.length) {
         resetearJugadaUsuario(jugadaUsuario);
         sumadorTurnoUsuario();
-        contadorPuntosUsuario();
         jugadaComputadora.push(obtenerNumeroRandom());
         juegaComputadora();
     }
