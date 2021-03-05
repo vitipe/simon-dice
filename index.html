@@ -8,9 +8,12 @@
     <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='node_modules\bootstrap\dist\css\bootstrap.min.css'>
 </head>
-<header>
-    <h1>Bienvenido al simon dice!<button id="boton-jugar">Jugar</button></h1>
-</header>
+
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Bienvenido al Simon dice!</span>
+    <strong class="oculto" id="error-jugada">Le erraste :(</strong>
+    <button id="boton-jugar" class="btn btn-primary">Jugar</button>
+</nav>
 <body>
     <form id="form-juego">
         <div class="container" id="tablero-juego">
@@ -36,12 +39,16 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <p id="turno-usuario">Turno #1</p>
-        <strong class="oculto" id="error-jugada">Le erraste :(</strong>
-        <div id="botones-juego">
-            <button class="oculto" id="boton-continuar-juego">Querés intentar de nuevo?</button>
-            <button class="oculto" id="boton-reinicio-juego">Querés comenzar de nuevo?</button>
+            <div class="row">
+                <div class="col-sm">
+                    <p id="turno-usuario">Turno #1</p>
+                    <strong class="oculto" id="error-jugada">Le erraste :(</strong>
+                    <div id="botones-juego">
+                        <button class="oculto" id="boton-continuar-juego">Querés intentar de nuevo?</button>
+                        <button class="oculto" id="boton-reinicio-juego">Querés comenzar de nuevo?</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 </body>

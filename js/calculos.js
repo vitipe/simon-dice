@@ -1,4 +1,4 @@
-let jugadaUsuario = []; //ver de mandarlo adentro de alguna function, es la unica variable global que me quedó
+let jugadaUsuario = [];
 let jugadaComputadora = crearJugadaComputadora();
 bloquearClickUsuario();
 
@@ -103,11 +103,6 @@ function bloquearClickUsuario() {
     document.querySelector('#cuadro-2').style.pointerEvents = "none";
     document.querySelector('#cuadro-3').style.pointerEvents = "none";
     document.querySelector('#cuadro-4').style.pointerEvents = "none";
-
-    document.querySelector('#tablero-juego').style.borderStyle = "solid";
-    document.querySelector('#tablero-juego').style.borderColor = "black";
-    document.querySelector('#tablero-juego').style.borderRadius = "2px";
-
 }
 
 function desbloquearClickUsuario() {
@@ -115,19 +110,15 @@ function desbloquearClickUsuario() {
     document.querySelector('#cuadro-2').style.pointerEvents = "auto";
     document.querySelector('#cuadro-3').style.pointerEvents = "auto";
     document.querySelector('#cuadro-4').style.pointerEvents = "auto";
-
-    document.querySelector('#tablero-juego').style.borderStyle = "";
-    document.querySelector('#tablero-juego').style.borderColor = "";
-    document.querySelector('#tablero-juego').style.borderRadius = "";
 }
 
 function colorearClicksUsuario(cuadroClickeado) {
     setTimeout(function() {
-        document.querySelector(cuadroClickeado).className = 'clickeado';
+        document.querySelector(cuadroClickeado).style.opacity = '70%'
     }, 0);
 
     setTimeout(function() {
-        document.querySelector(cuadroClickeado).className = '';
+        document.querySelector(cuadroClickeado).style.opacity = '50%'
     }, 75);
 }
 
