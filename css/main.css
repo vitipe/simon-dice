@@ -4,7 +4,7 @@
 
 .cuadro {
     height: 40vh;
-    opacity: 0.5;
+    opacity: 40%;
     transition: opacity 500ms;
 }
 

@@ -2,9 +2,8 @@ let jugadaUsuario = [];
 let jugadaComputadora = crearJugadaComputadora();
 bloquearClickUsuario();
 
-
 function obtenerNumeroRandom() {
-    let numeroRandom = Math.floor(Math.random() * 4 + 1); //El valor tiene que ser entre 1 y 4
+    let numeroRandom = Math.ceil(Math.random() * 4)
     return numeroRandom;
 }
 
@@ -13,6 +12,7 @@ function colorearBotones(jugadaComputadora) {
     let DELAY_COLOR_NORMAL = 1000;
 
     bloquearClickUsuario();
+    cambiarTituloPagina('Juega la computadora')
 
     for (let i = 0; i < jugadaComputadora.length; i++) {
 
@@ -34,6 +34,7 @@ function colorearBotones(jugadaComputadora) {
 
     setTimeout(function() {
         desbloquearClickUsuario();
+        cambiarTituloPagina('Jugas vos')
     }, DELAY_COLOR_NORMAL - 1000);
 }
 
@@ -52,6 +53,10 @@ function juegaComputadora() {
     colorearBotones(jugadaComputadora);
 }
 
+function cambiarTituloPagina(titulo) {
+    document.querySelector('#cartel-bienvenida').textContent = titulo;
+}
+
 function resetearJugadaUsuario(jugadaUsuario) {
 
     for (let i = 1; i <= jugadaUsuario.length;) {
@@ -60,14 +65,14 @@ function resetearJugadaUsuario(jugadaUsuario) {
 }
 
 function sumadorTurnoUsuario() {
-    let turnoUsuario = 0;
+    let turnoUsuario = 1;
     for (let i = 0; i < jugadaComputadora.length; i++) {
         turnoUsuario++
     }
     document.querySelector('#turno-usuario').textContent = "Turno #" + turnoUsuario;
 }
 
-function contadorPuntosUsuario() { //esto y lo de arriba no los puedo hacer en un solo calculo?
+function contadorPuntosUsuario() {
     let puntosUsuario = 0;
     for (let i = 0; i < jugadaComputadora.length; i++) {
         puntosUsuario++
@@ -114,11 +119,11 @@ function desbloquearClickUsuario() {
 
 function colorearClicksUsuario(cuadroClickeado) {
     setTimeout(function() {
-        document.querySelector(cuadroClickeado).style.opacity = '70%'
+        document.querySelector(cuadroClickeado).style.opacity = '100%'
     }, 0);
 
     setTimeout(function() {
-        document.querySelector(cuadroClickeado).style.opacity = '50%'
+        document.querySelector(cuadroClickeado).style.opacity = '40%'
     }, 75);
 }
 
@@ -181,5 +186,5 @@ document.querySelector('#boton-continuar-juego').onclick = function() {
 }
 
 document.querySelector('#boton-reinicio-juego').onclick = function() {
-    document.querySelector('#form-juego').reset();
+    
 }
