@@ -24,15 +24,15 @@ The site would have a header with a welcome message, four "buttons" (element's l
 7. Armar Bootstrap, crear un branch nuevo o usar este mismo y dejar el juego andando bien en el master.
 8. Ver de reutilizar el contador de turnos y el contador de puntos
 
-Modos de juego a ver si agrego?:
+**Modos de juego a ver si agrego?:**
 [X] Continuar desde donde le erraste
 [ ] Aumentar la velocidad a la cual te tira todos los colores
     -Agregar boton de aumentar velocidad
 [ ] modo inverso o algo asi?
 
-###Cosas a mejorar a partir de ver la clase 10:
-1. Invertir opacity colores
-2. Ver transition 500ms para que se coloreen los cuadros
-3. function reiniciadora: vuelve jugadaUsuario, jugadaComputadora y turno a los valores estándar.
-4. Usar math.ceil en numero random y con eso puedo sacar el "+1"
-5. Agregar bootstrap, armar el tablero y el header todo con el grid de bootstrap.
+**###Cosas a mejorar a partir de ver la clase 10:**
+1. 
+2.
+1. function reiniciadora: vuelve jugadaUsuario, jugadaComputadora y turno a los valores estándar.
+2. 
+3. Agregar bootstrap, armar el tablero y el header todo con el grid de bootstrap.

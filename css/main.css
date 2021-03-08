@@ -14,26 +14,22 @@
 
 #cuadro-1 {
     background-color:#1ad771;
+    opacity: 40%;
 }
 
 #cuadro-2 {
     background-color:#fb472e;
+    opacity: 40%;
 }
 
 #cuadro-3 {
     background-color:#f5f821;
+    opacity: 40%;
 }
 
 #cuadro-4 {
     background-color:#1e98db;
-}
-
-.en-juego {
-    opacity: 20%;
-}
-
-.clickeado {
-    opacity: 70%    
+    opacity: 40%;
 }
 
 body {
