@@ -1,10 +1,10 @@
-let jugadaUsuario = []; //ver de mandarlo adentro de alguna function, es la unica variable global que me quedó
+let jugadaUsuario = [];
 let jugadaComputadora = crearJugadaComputadora();
 bloquearClickUsuario("Bienvenido al simon dice!");
 
-
 function obtenerNumeroRandom() {
-    let numeroRandom = Math.ceil(Math.random() * 4);
+    let numeroRandom = Math.ceil(Math.random() * 4)
+
     return numeroRandom;
 }
 
@@ -16,20 +16,21 @@ function colorearBotones(jugadaComputadora) {
     let DELAY_COLOR_JUGADA = 500;
     let DELAY_COLOR_NORMAL = 1000;
 
-    bloquearClickUsuario("Juega la computadora");
+    bloquearClickUsuario();
+    cambiarTituloPagina('Juega la computadora')
 
     for (let i = 0; i < jugadaComputadora.length; i++) {
 
-        let $botonEnJuego = document.querySelector(`#cuadro-${jugadaComputadora[i]}`);
+        let $cuadroEnJuego = document.querySelector(`#cuadro-${jugadaComputadora[i]}`);
 
         setTimeout(function() {
-            $botonEnJuego.style.opacity = '100%';
-            $botonEnJuego.style.transition = 'opacity 250ms';
+            $cuadroEnJuego.style.opacity = '100%';
+            $cuadroEnJuego.style.transition = 'opacity 250ms';
         }, DELAY_COLOR_JUGADA);
 
         setTimeout(function() {
-            $botonEnJuego.style.opacity = '40%';
-            $botonEnJuego.style.transition = 'opacity 250ms';
+            $cuadroEnJuego.style.opacity = '40%';
+            $cuadroEnJuego.style.transition = 'opacity 250ms';
         }, DELAY_COLOR_NORMAL);
 
         DELAY_COLOR_JUGADA += 1000;
@@ -38,6 +39,7 @@ function colorearBotones(jugadaComputadora) {
 
     setTimeout(function() {
         desbloquearClickUsuario();
+        cambiarTituloPagina('Jugas vos')
     }, DELAY_COLOR_NORMAL - 1000);
 }
 
@@ -45,7 +47,7 @@ function crearJugadaComputadora() {
     let turnoUsuario = 1;
     let jugadaComputadora = [];
 
-    for (let i = 0; i < turnoUsuario; i++) { //probar usar ForEach?
+    for (let i = 0; i < turnoUsuario; i++) {
         jugadaComputadora.push(obtenerNumeroRandom());
     }
 
@@ -56,6 +58,10 @@ function juegaComputadora() {
     colorearBotones(jugadaComputadora);
 }
 
+function cambiarTituloPagina(titulo) {
+    document.querySelector('#cartel-bienvenida').textContent = titulo;
+}
+
 function resetearJugadaUsuario(jugadaUsuario) {
 
     for (let i = 1; i <= jugadaUsuario.length;) {
@@ -64,20 +70,15 @@ function resetearJugadaUsuario(jugadaUsuario) {
 }
 
 function sumadorTurnoUsuario() {
-    let turnoUsuario = 0;
+    let turnoUsuario = 1;
     for (let i = 0; i < jugadaComputadora.length; i++) {
         turnoUsuario++
     }
     document.querySelector('#turno-usuario').textContent = "Turno #" + turnoUsuario;
 }
 
-function contadorPuntosUsuario() { //esto y lo de arriba no los puedo hacer en un solo calculo?
-    let puntosUsuario = 0;
-    for (let i = 0; i < jugadaComputadora.length; i++) {
-        puntosUsuario++
-    }
-
-    return puntosUsuario - 1;
+function contadorPuntosUsuario() {
+    return jugadaComputadora.length - 1;
 }
 
 function mostrarErrorJugada() {
@@ -107,9 +108,6 @@ function bloquearClickUsuario(titulo) {
     document.querySelector('#cuadro-2').style.pointerEvents = "none";
     document.querySelector('#cuadro-3').style.pointerEvents = "none";
     document.querySelector('#cuadro-4').style.pointerEvents = "none";
-
-    document.querySelector('#cartel-bienvenida').textContent = titulo;
-
 }
 
 function desbloquearClickUsuario() {
@@ -117,17 +115,15 @@ function desbloquearClickUsuario() {
     document.querySelector('#cuadro-2').style.pointerEvents = "auto";
     document.querySelector('#cuadro-3').style.pointerEvents = "auto";
     document.querySelector('#cuadro-4').style.pointerEvents = "auto";
-
-    document.querySelector('#cartel-bienvenida').textContent = "Jugás vos";
 }
 
 function colorearClicksUsuario(cuadroClickeado) {
     setTimeout(function() {
-        document.querySelector(cuadroClickeado).style.opacity = '100%';
+        document.querySelector(cuadroClickeado).style.opacity = '100%'
     }, 0);
 
     setTimeout(function() {
-        document.querySelector(cuadroClickeado).style.opacity = '40%';
+        document.querySelector(cuadroClickeado).style.opacity = '40%'
     }, 75);
 }
 
@@ -146,7 +142,6 @@ function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subcuadro
     if (cantidadAciertos === jugadaComputadora.length) {
         resetearJugadaUsuario(jugadaUsuario);
         sumadorTurnoUsuario();
-        contadorPuntosUsuario();
         jugadaComputadora.push(obtenerNumeroRandom());
         juegaComputadora();
     }
@@ -189,6 +184,7 @@ document.querySelector('#boton-continuar-juego').onclick = function() {
     return false;
 }
 
-document.querySelector('#boton-reinicio-juego').onclick = function() { // todavía no funciona, solo resetea el form
-    
+document.querySelector('#boton-reinicio-juego').onclick = function() {
+    //al estar en un form resetea el sitio
 }
+

@@ -2,7 +2,7 @@
 
 Once the class N°8 of the course was finished, the homework was to do a game, spefically a "Simon says". This game would be later reviewed in the class n°10 by Fabri.
 
-My decision for the "package" to use was JS vanilla, HTML and CSS. At the same time Bootstrap was mentioned, but in my case first I tried to do it with only the "vanilla" approach, and later would integrate bootstrap and in that way notice the differences and new things that this package gives.
+My decision for the "toolbox" to use was JS vanilla, HTML and CSS. At the same time Bootstrap was mentioned, but in my case first I tried to do it with only the vanilla approach, and later would integrate bootstrap and in that way notice the differences and new things that this package gives.
 
 ##My reasoning for the game at first was something like this:
 
@@ -15,12 +15,14 @@ The site would have a header with a welcome message, four "buttons" (element's l
 
 ### TO-DO
 
-1. Mensaje que diga que vas mejorando si aumentaste los puntos con respecto a la ultima jugada?
-2. Mostrarselo a canal clase 10
-3. Armar un leaderboard
-4. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
-5. Poner todas las functions en calculos y armar un .js nuevo con lo que es manejo del DOM? es asi?
-6. Armar Bootstrap, crear un branch nuevo o usar este mismo y dejar el juego andando bien en el master.
+1. Función para resetear el tablero sin recargar la página
+2. Mensaje que diga que vas mejorando si aumentaste los puntos con respecto a la ultima jugada?
+3. Mostrarselo a canal clase 10
+4. Armar un leaderboard
+5. Ver de poner las variables globales adentro de algunas funciones  (que pasa si dos functions la comparten?)
+6. Poner todas las functions en calculos y armar un .js nuevo con lo que es manejo del DOM? es asi?
+7. Armar Bootstrap, crear un branch nuevo o usar este mismo y dejar el juego andando bien en el master.
+8. Ver de reutilizar el contador de turnos y el contador de puntos
 
 **Modos de juego a ver si agrego?:**
 [X] Continuar desde donde le erraste

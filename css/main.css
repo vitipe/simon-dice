@@ -1,13 +1,15 @@
-.container-tablero {
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    height: 500px;
-    width: 600px;
+.container {
+    height: 90vh;
+}
+
+.cuadro {
+    height: 40vh;
+    opacity: 40%;
+    transition: opacity 500ms;
 }
 
 #tablero-juego {
-    background-color: lightgray;
+    background-color: rgb(223, 223, 223);
 }
 
 #cuadro-1 {
@@ -32,16 +34,10 @@
 
 body {
     background-color: rgb(226, 226, 226);
-    margin: 0;
-    padding: 0;
 }
 
-form {
-    width: 650px;
-    margin: 0 auto;
-}
 
-header {
+nav {
     text-align: center;
     font-family: monospace;
 }
