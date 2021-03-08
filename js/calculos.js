@@ -1,15 +1,11 @@
 let jugadaUsuario = [];
 let jugadaComputadora = crearJugadaComputadora();
-bloquearClickUsuario("Bienvenido al simon dice!");
+cambiarTituloPagina('SIMON DICE')
 
 function obtenerNumeroRandom() {
     let numeroRandom = Math.ceil(Math.random() * 4)
 
     return numeroRandom;
-}
-
-function prenderLuzBoton() {
-    
 }
 
 function colorearBotones(jugadaComputadora) {
@@ -103,7 +99,7 @@ function ocultarBotonJugar() {
     document.querySelector('#boton-jugar').className = 'oculto';
 }
 
-function bloquearClickUsuario(titulo) {
+function bloquearClickUsuario() {
     document.querySelector('#cuadro-1').style.pointerEvents = "none";
     document.querySelector('#cuadro-2').style.pointerEvents = "none";
     document.querySelector('#cuadro-3').style.pointerEvents = "none";
@@ -127,7 +123,7 @@ function colorearClicksUsuario(cuadroClickeado) {
     }, 75);
 }
 
-function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) { //Subcuadroidir en functions?
+function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) {
     let cantidadAciertos = 0;
 
     for (let i = 0; i < jugadaUsuario.length; i++) {
