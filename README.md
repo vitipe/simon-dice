@@ -1,5 +1,9 @@
 # simon-dice
  
- Tarea del curso "r/argentinaPrograma" de elaborar un "simón dice" sobre la base de lo aprendido de JS vanilla.
+ Tarea del curso "r/argentinaPrograma" de elaborar un "simón dice" sobre la base de lo aprendido anteriormente.
 
-La nueva herramienta a utilizar sería bootstrap.
+El stack utilizado es:
+-JS vanilla
+-HTML
+-CSS
+-Bootstrap
