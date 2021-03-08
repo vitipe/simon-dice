@@ -180,5 +180,6 @@ document.querySelector('#boton-continuar-juego').onclick = function() {
 }
 
 document.querySelector('#boton-reinicio-juego').onclick = function() {
-    
+    //al estar en un form resetea el sitio
 }
+
