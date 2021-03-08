@@ -5,19 +5,16 @@ cambiarTituloPagina('SIMON DICE')
 
 function obtenerNumeroRandom() {
     let numeroRandom = Math.ceil(Math.random() * 4)
-
     return numeroRandom;
 }
 
 function colorearBotones(jugadaComputadora) {
     let DELAY_COLOR_JUGADA = 500;
     let DELAY_COLOR_NORMAL = 1000;
-
     bloquearClickUsuario();
     cambiarTituloPagina('Juega la computadora')
 
     for (let i = 0; i < jugadaComputadora.length; i++) {
-
         let $cuadroEnJuego = document.querySelector(`#cuadro-${jugadaComputadora[i]}`);
 
         setTimeout(function() {
@@ -47,7 +44,6 @@ function crearJugadaComputadora() {
     for (let i = 0; i < turnoUsuario; i++) {
         jugadaComputadora.push(obtenerNumeroRandom());
     }
-
     return jugadaComputadora;
 }
 
@@ -60,7 +56,6 @@ function cambiarTituloPagina(titulo) {
 }
 
 function resetearJugadaUsuario(jugadaUsuario) {
-
     for (let i = 1; i <= jugadaUsuario.length;) {
         jugadaUsuario.pop(jugadaUsuario);
     }
@@ -128,7 +123,6 @@ function chequearResultadoJugada(jugadaUsuario, jugadaComputadora) {
     let cantidadAciertos = 0;
 
     for (let i = 0; i < jugadaUsuario.length; i++) {
-
         if (jugadaUsuario[i] === jugadaComputadora[i]) {
             cantidadAciertos++;
         } else {
